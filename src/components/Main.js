@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import SatSetting from './SatSetting';
 import SatelliteList from './SatelliteList';
-import { NEARBY_SATELLITE, STARLINK_CATEGORY, SAT_API_KEY } from '../constant';
+import { NEARBY_SATELLITE, STARLINK_CATEGORY, my_k_e_y } from '../constant';
 import Axios from 'axios';
 
 class Main extends Component {
@@ -20,7 +20,7 @@ class Main extends Component {
         const {observerLat, observerLong, observerAlt, radius} = setting;
         const url = `${NEARBY_SATELLITE}/${observerLat}/
                     ${observerLong}/${observerAlt}/${radius}/
-                    ${STARLINK_CATEGORY}/&apiKey=${SAT_API_KEY}`;
+                    ${STARLINK_CATEGORY}/&apiKey=${my_k_e_y}`;
         this.setState({
             loadingSatellites: true,
         })
