@@ -1,32 +1,45 @@
 
 import React, {Component} from 'react';
-import {InputNumber} from 'antd';
+import {InputNumber, Button} from 'antd';
 
 class SatSetting extends Component {
     constructor(){
         super();
         this.state = {
             observerLat: 0,
-            observerLong: 0
+            observerLong:0,
+            observerAlt:0,
+            radius: 90,
         }
     }
-
-    onChangeLong = (value) => {
-        console.log('value ', value)
-        this.setState({
-            observerLong: value
-        })
-    }
-
+    onChangeLong = (value)=>{
+        this.setState(
+            {
+                observerLong: value
+            }
+        )
+    };
     onChangeLat = (value) => {
-        console.log('value ', value)
         this.setState({
             observerLat: value
         })
     }
 
-    render() {
-        //the <InputNumber /> is from Ant Design. I imported it.
+    onChangeAlt = (value) => {
+        this.setState({
+            observerAlt: value
+        })
+    }
+    onChangeRadius = (value)=>{
+        this.setState({
+            radius: value
+        })
+    }
+    showSatellite =() =>{
+        this.props.onShow(this.state);
+    }
+
+    render(){
         return (
             <div className="sat-setting">
                 <div className="loc-setting">
@@ -34,7 +47,6 @@ class SatSetting extends Component {
                     <div className="setting-list two-item-col">
                         <div className="list-item">
                             <label>Longitude: </label>
-                            
                             <InputNumber
                                 min={-180}
                                 max={180}
@@ -58,20 +70,48 @@ class SatSetting extends Component {
                     </div>
                     <div className="setting-list">
                         <div className="list-item">
-                            <label>Elevation(meters): </label>
+                            <label>Altitude(meters): </label>
                             <InputNumber
                                 min={-413}
                                 max={8850}
                                 defaultValue={0}
                                 style={{margin: "0 2px"}}
-                                onChange={this.onChangeEle}
+                                onChange={this.onChangeAlt}
                             />
                         </div>
                     </div>
+                        <p className="setting-label">Restrictions</p>
+                        <div className="setting-list">
+                            <div className="list-item">
+                                <label>Search Radius </label>
+                                <InputNumber
+                                    min={0}
+                                    max={90}
+                                    defaultValue={90}
+                                    style={{margin: "0 2px"}}
+                                    onChange={this.onChangeRadius}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="show-nearby">
+                            <Button
+                                className="show-nearby-btn"
+                                size="large"
+                                onClick={this.showSatellite}
+                            >
+                                Find Nearby Satellites
+                            </Button>
+                        </div>
+
                 </div>
             </div>
-        );
+
+        )
     }
+
 }
+
+
 
 export default SatSetting;
