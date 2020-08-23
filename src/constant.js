@@ -7,3 +7,5 @@ export const my_k_e_y = "C4DNWY-LFWN6Y-RP5G6Z-4IZ2";
 export const STARLINK_CATEGORY = "52";
 
 export const NEARBY_SATELLITE = `${SAT_BASE_URL}/above`;
+
+export const WORLD_MAP_URL = "https://unpkg.com/world-atlas@1/world/110m.json";
