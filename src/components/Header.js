@@ -6,7 +6,7 @@ class Header extends Component{
         return (
             <header className ="App-header">
                 <img src = {starlinkLogo} className="App-logo" alt="logo" />
-                <p className="title">StarLink Tracker</p>
+                <p className="title">StarLink Trajectory Tracker</p>
             </header>
         );
     }
