@@ -43,6 +43,7 @@ class Main extends Component {
             })
           )
           .then( res => {
+              console.log(res);
               this.setState({
                   satPositions: res,
                   loadingSatPositions: false,
@@ -119,16 +120,16 @@ class Main extends Component {
     const context2 = canvas2.node().getContext("2d");
 
     let now = new Date();
-    let i = startTime;
-
+    let i = startTime-startTime;
+    let count=0;
     let timer = setInterval( () => {
         let timePassed = Date.now() - now;
-        if(i === startTime) {
-            now.setSeconds(now.getSeconds() + startTime * 60)
+        if(i === startTime-startTime) {
+            now.setSeconds(now.getSeconds() + (startTime-startTime) * 60)
         }
 
         let time = new Date(now.getTime() + 60 * timePassed);
-        context2.clearRect(0, 0, width, height);
+        context2.clearRect(0, 0, width, 30);
         context2.font = "bold 14px sans-serif";
         context2.fillStyle = "#333";
         context2.textAlign = "center";
@@ -141,16 +142,17 @@ class Main extends Component {
             oHint.innerHTML = ''
             return;
         }
+        
         data.forEach( sat => {
             const { info, positions } = sat;
-            this.drawSat(info, positions[i], context2)
+            this.drawSat(info, positions[i], context2, count);
         });
-
+        count++;
         i += 60;
     }, 1000)
 }
 
-drawSat = (sat, pos, context2) => {
+drawSat = (sat, pos, context2, count) => {
     const { satlongitude, satlatitude } = pos;
     if(!satlongitude || !satlatitude ) return;
     const { satname } = sat;
@@ -168,7 +170,7 @@ drawSat = (sat, pos, context2) => {
     context2.fill();
     context2.font = "bold 11px sans-serif";
     context2.textAlign = "center";
-    context2.fillText(nameWithNumber, xy[0], xy[1]+14);
+    if(count==0) context2.fillText(nameWithNumber, xy[0], xy[1]+14);
 }
 ////////////////////////////////////////////////////
     render() {

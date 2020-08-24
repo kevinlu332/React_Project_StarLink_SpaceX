@@ -6,7 +6,7 @@ class SatelliteList extends React.Component{
     constructor(){
         super();
         this.state={
-            duration:0,
+            duration:11,
         }
     }
     onChange = e => {
@@ -15,7 +15,7 @@ class SatelliteList extends React.Component{
     }
     onChangeDuration = (value) => {
         this.setState({
-            duration: value
+            duration: value+1
         })
     }
 
@@ -34,7 +34,7 @@ class SatelliteList extends React.Component{
                     <InputNumber
                         min={0}
                         max={90}
-                        defaultValue={0}
+                        defaultValue={10}
                         style={{margin: "0 2px"}}
                         onChange={this.onChangeDuration}
                     />
