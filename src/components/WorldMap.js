@@ -80,8 +80,11 @@ class WorldMap extends Component {
         return (
             <div className="map-box">
                 <canvas className="map" ref={this.refMap} />
+                <canvas className="track" ref={this.props.refTrack}/>
+                <div className="hint"></div>
                 {
-                (this.props.loading)? <Spin tip="Loading..." />:<></>
+                (this.props.loading)? 
+                    <Spin tip="Loading..." />:<></>
                 }
             </div>
         );

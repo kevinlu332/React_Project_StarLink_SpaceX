@@ -30,7 +30,7 @@ class SatelliteList extends React.Component{
                         onClick={()=>this.props.trackOnclick(this.state.duration)}
                         >Track on the map</Button>
                         <div className="list-item">
-                    <label>Track Duration(sec) </label>
+                    <label>Track Duration(min) </label>
                     <InputNumber
                         min={0}
                         max={90}
